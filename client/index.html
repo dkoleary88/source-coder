@@ -6,22 +6,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Source Code Getter</title>
 
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <!-- Style Sheets -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
   </head>
 
   <body>
 
-    <!-- JavaScript Files -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-    <script src="js/client.js"></script>
+    <div ng-app="SourceApp" ng-controller="SourceCtrl" class="container">
 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+      <div class="row">
+        <div class="col-md-12">
+          <h1>Source Coder</h1>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <form class="form-inline" name="urlForm" ng-submit="source()">
+            <div class="form-group">
+              <input type="url" class="form-control" ng-model="url" ng-click="resetURL()" required="true" placeholder="Enter a URL">
+            </div>
+            <button type="submit" class="btn btn-primary" ng-disabled="urlForm.$invalid">Get Source Code</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-8">
+          <pre id="html">
+            {{html}}
+          </pre>
+        </div>
+        <div class="col-md-4">
+          <ul class="list-group">
+            <li class="list-group-item" ng-repeat="(tag, count) in tags">
+              <span class="badge">{{count}}</span>
+              {{tag}}
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="js/app.js"></script>
+
   </body>
 </html>

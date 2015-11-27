@@ -9,6 +9,10 @@ var parse = require('./parse');
 // instantiate express server
 var app = express();
 
+// dev dependencies
+var morgan = require('morgan');
+app.use(morgan('dev'));
+
 // parse request body as json
 app.use(bodyParser.json());
 
