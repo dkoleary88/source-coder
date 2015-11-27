@@ -9,35 +9,43 @@
     <!-- Style Sheets -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+
   </head>
 
   <body>
 
     <div ng-app="SourceApp" ng-controller="SourceCtrl" class="container">
-
+      <!-- Header Row -->
       <div class="row">
         <div class="col-md-12">
           <h1>Source Coder</h1>
         </div>
       </div>
 
+      <!-- Form Row -->
       <div class="row">
         <div class="col-md-12">
           <form class="form-inline" name="urlForm" ng-submit="source()">
-            <div class="form-group">
+            <div class="form-group" ng-class="{'has-error': invalidURL}">
               <input type="url" class="form-control" ng-model="url" ng-click="resetURL()" required="true" placeholder="Enter a URL">
             </div>
-            <button type="submit" class="btn btn-primary" ng-disabled="urlForm.$invalid">Get Source Code</button>
+            <button type="submit" class="btn btn-primary" ng-class="{'btn-danger': invalidURL}" ng-disabled="loading">{{buttonText}}</button>
           </form>
+          <div class="alert alert-danger alert-dismissible" ng-show="invalidURL" role="alert">Invalid URL!</div>
         </div>
       </div>
 
+      <!-- Info Row -->
       <div class="row">
+
+        <!-- HTML Col -->
         <div class="col-md-8">
           <pre id="html">
             {{html}}
           </pre>
         </div>
+
+        <!-- Tags Col -->
         <div class="col-md-4">
           <ul class="list-group">
             <li class="list-group-item" ng-repeat="(tag, count) in tags">
@@ -46,11 +54,12 @@
             </li>
           </ul>
         </div>
+
       </div>
 
     </div>
 
-    <!-- JavaScript Files -->
+    <!-- JavaScript -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
