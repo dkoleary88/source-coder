@@ -1,4 +1,4 @@
-angular.module('SourceApp', [])
+angular.module('SourceApp', ['ngSanitize'])
 
   .factory('SourceFactory', ['$http', function($http) {
     return {
@@ -9,9 +9,14 @@ angular.module('SourceApp', [])
     };
   }])
 
-  .controller('SourceCtrl', ['$scope', 'SourceFactory', function($scope, SourceFactory) {
-    $scope.html = '';
-    $scope.tags = {};
+  .controller('SourceCtrl', ['$scope', '$sce', 'SourceFactory', function($scope, $sce, SourceFactory) {
+
+    $scope.clearView = function () {
+      $scope.highlight(false);
+      $scope.html = '';
+      $scope.tagStyle = '';
+      $scope.tags = {};
+    };
 
     $scope.toggleButton = function (enable) {
       if (enable) {
@@ -29,10 +34,11 @@ angular.module('SourceApp', [])
     };
 
     $scope.source = function() {
+      $scope.clearView();
       $scope.toggleButton(false);
       SourceFactory.getSource($scope.url)
         .then(function(res) {
-          $scope.html = res.data.html;
+          $scope.html = $sce.trustAsHtml(res.data.html);
           $scope.tags = res.data.tags;
           $scope.toggleButton(true);
         })
@@ -42,6 +48,17 @@ angular.module('SourceApp', [])
         });
     };
 
+    $scope.highlight = function (tagName) {
+      $('style#tag-style').remove();
+      if (tagName){
+        $('head').append('<style id="tag-style"> \
+          #tag-'+tagName+' { color: #FFF; } \
+          pre { background-color: #08C; } \
+        </style>');
+      }
+    };
+
     $scope.toggleButton(true);
+    $scope.clearView();
 
   }]);

@@ -1,5 +1,10 @@
+// Builds response body object for use by client
+// Builds a tags hash with tag counts
+// Adds <span> tag with #id for style that wraps around each tag in HTML
+// Escapes all HTML
+
 var htmlparser = require("htmlparser2");
-var prettyPrint = require('html').prettyPrint;
+var styleSpan = require('./pretty').styleSpan;
 
 // hash to store all the tags counts from html
 var tags = {};
@@ -15,13 +20,17 @@ var parser = new htmlparser.Parser({
 });
 
 module.exports = function (html) {
-  html = prettyPrint(html);
+  // populate tags hash with values
+  tags = {};
   parser.parseComplete(html);
-  responseObj = {
+
+  // add id'd span tags and escapes html
+  html = styleSpan(html);
+
+  // return object with parsed html and tag counts
+  return {
     html: html,
     tags: tags
   };
-  // return object with html as well as tag counts
-  tags = {};
-  return responseObj;
+
 };

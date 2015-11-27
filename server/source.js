@@ -1,3 +1,5 @@
+// Retrieves HTML via GET request to URL
+
 var request = require('request');
 
 module.exports = function (url) {

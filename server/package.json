@@ -12,6 +12,7 @@
     "body-parser": "^1.14.1",
     "express": "^4.13.3",
     "html": "0.0.10",
+    "html-escape": "^1.0.2",
     "htmlparser2": "^3.8.3",
     "request": "^2.67.0"
   },

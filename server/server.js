@@ -1,3 +1,7 @@
+// Main server file
+// Serves static files from ../client
+// Serves POST requests to /source endpoint
+
 // external dependencies
 var express = require('express');
 var bodyParser = require('body-parser');
