@@ -7,8 +7,8 @@ var express = require('express');
 var bodyParser = require('body-parser');
 
 // internal dependencies
-var source = require('./source');
-var parse = require('./parse');
+var source = require('./util/source');
+var parse = require('./util/parse');
 
 // instantiate express server
 var app = express();
@@ -20,8 +20,8 @@ app.use(morgan('dev'));
 // parse request body as json
 app.use(bodyParser.json());
 
-// server static files from client directory
-app.use(express.static('../client'));
+// server static files from public directory
+app.use(express.static('./public'));
 
 // handle post request on source endpoint - from client
 app.post('/source',

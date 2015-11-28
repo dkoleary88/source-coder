@@ -16,6 +16,7 @@ angular.module('SourceApp', ['ngSanitize'])
       $scope.html = '';
       $scope.tagStyle = '';
       $scope.tags = {};
+      $scope.darken = false;
     };
 
     $scope.toggleButton = function (enable) {
@@ -49,12 +50,12 @@ angular.module('SourceApp', ['ngSanitize'])
     };
 
     $scope.highlight = function (tagName) {
-      $('style#tag-style').remove();
+      $('span[id=tag-'+$scope.highlighted+']').removeClass('tag-highlight');
+      $scope.darken = false;
       if (tagName){
-        $('head').append('<style id="tag-style"> \
-          #tag-'+tagName+' { color: #FFF; } \
-          pre { background-color: #08C; } \
-        </style>');
+        $('span[id=tag-'+tagName+']').addClass('tag-highlight');
+        $scope.highlighted = tagName;
+        $scope.darken = true;
       }
     };
 

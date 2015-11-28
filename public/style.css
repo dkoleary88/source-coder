@@ -1,0 +1,24 @@
+form {
+  margin: 15px;
+}
+
+#html {
+    overflow-x: auto;
+    height: 600px !important;
+    word-wrap: normal;
+    white-space: pre;
+}
+
+.tag-highlight {
+  color: #DEF;
+  text-shadow: 0 0 2px rgba(0,0,0,0.7);
+}
+
+.tag-highlight > span:not(.tag-highlight) {
+  color: #BCD;
+  text-shadow: 0 0 1px rgba(0,0,0,0.2);
+}
+
+.pre-dark {
+  background-color: #08C;
+}
