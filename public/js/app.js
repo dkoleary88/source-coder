@@ -11,14 +11,14 @@ angular.module('SourceApp', ['ngSanitize'])
 
   .controller('SourceCtrl', ['$scope', '$sce', 'SourceFactory', function($scope, $sce, SourceFactory) {
 
+    // Resets the view
     $scope.clearView = function () {
       $scope.highlight(false);
       $scope.html = '';
-      $scope.tagStyle = '';
       $scope.tags = {};
-      $scope.darken = false;
     };
 
+    // Toggles the button view between enabled and disabled
     $scope.toggleButton = function (enable) {
       if (enable) {
         $scope.buttonText = 'Get Source Code';
@@ -29,11 +29,13 @@ angular.module('SourceApp', ['ngSanitize'])
       }
     };
 
+    // Resets the URL field to 'http://'
     $scope.resetURL = function () {
       $scope.url = 'http://';
       $scope.invalidURL = false;
     };
 
+    // Sends source code request to server and updates view accordingly
     $scope.source = function() {
       $scope.clearView();
       $scope.toggleButton(false);
@@ -49,16 +51,16 @@ angular.module('SourceApp', ['ngSanitize'])
         });
     };
 
+    // Highlights the code given a tag name
     $scope.highlight = function (tagName) {
       $('span[id=tag-'+$scope.highlighted+']').removeClass('tag-highlight');
-      $scope.darken = false;
       if (tagName){
         $('span[id=tag-'+tagName+']').addClass('tag-highlight');
         $scope.highlighted = tagName;
-        $scope.darken = true;
       }
     };
 
+    // Initialize view on page load
     $scope.toggleButton(true);
     $scope.clearView();
 

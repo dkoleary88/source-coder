@@ -15,7 +15,8 @@
 
   <body>
     <div ng-app="SourceApp" ng-controller="SourceCtrl" class="container">
-      <!-- Header Row -->
+
+      <!-- Heading Row -->
       <div class="row">
         <div class="col-md-12">
           <h1>Source Coder</h1>
@@ -27,7 +28,7 @@
         <div class="col-md-12">
           <form class="form-inline" name="urlForm" ng-submit="source()">
             <div class="form-group" ng-class="{'has-error': invalidURL}">
-              <input type="url" class="form-control" ng-model="url" ng-click="resetURL()" ng-change="invalidURL = false" required="true" placeholder="Enter a URL">
+              <input type="url" class="form-control" ng-model="url" ng-focus="resetURL()" ng-change="invalidURL = false" required="true" placeholder="Enter a URL">
             </div>
             <button type="submit" class="btn btn-primary" ng-class="{'btn-danger': invalidURL}" ng-disabled="loading">{{buttonText}}</button>
           </form>
@@ -38,17 +39,17 @@
       <!-- Info Row -->
       <div class="row">
 
-        <!-- HTML Col -->
+        <!-- Source Code Col -->
         <div class="col-md-8">
-          <pre id="html" ng-class="{'pre-dark': darken}">
-            <code id="html" class="language-css" ng-bind-html="html"></code>
+          <pre class="html">
+            <code class="html" ng-bind-html="html"></code>
           </pre>
         </div>
 
         <!-- Tags Col -->
         <div class="col-md-4">
           <div class="list-group">
-            <a href="#" class="list-group-item" ng-repeat="(tag, count) in tags" ng-click="highlight(tag)">
+            <a href="#" id="tag" class="list-group-item" ng-repeat="(tag, count) in tags" ng-click="highlight(tag)">
               <span class="badge">{{count}}</span>
               {{tag}}
             </a>

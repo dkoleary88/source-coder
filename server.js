@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 // server static files from public directory
 app.use(express.static('./public'));
 
-// handle post request on source endpoint - from client
+// handle post request on '/source' endpoint - from client
 app.post('/source',
   function (req, res) {
     source(req.body.url)

@@ -2,23 +2,28 @@ form {
   margin: 15px;
 }
 
-#html {
-    overflow-x: auto;
-    height: 600px !important;
-    word-wrap: normal;
-    white-space: pre;
+pre.html {
+  background-color: #058;
+}
+
+code.html {
+  overflow-x: auto;
+  height: 600px !important;
+  word-wrap: normal;
+  white-space: pre;
+  color: #ABC;
+}
+
+#tag:focus {
+  background-color: #FC0;
+  color: black;
 }
 
 .tag-highlight {
-  color: #DEF;
-  text-shadow: 0 0 2px rgba(0,0,0,0.7);
+  color: #FC0;
+  text-shadow: 0 0 2px rgba(0,0,0,0.6);
 }
 
 .tag-highlight > span:not(.tag-highlight) {
-  color: #BCD;
-  text-shadow: 0 0 1px rgba(0,0,0,0.2);
-}
-
-.pre-dark {
-  background-color: #08C;
+  color: #FC8;
 }
