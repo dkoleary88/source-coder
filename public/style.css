@@ -1,17 +1,32 @@
+html, body, .full-height {
+  height: 100%;
+}
+
+.eighty-height {
+  height: 80%;
+}
+
 form {
-  margin: 15px;
+  margin: 15px 0;
 }
 
 pre.html {
   background-color: #058;
+  height: 100%;
+  overflow-x: scroll;
 }
 
 code.html {
-  overflow-x: auto;
-  height: 600px !important;
   word-wrap: normal;
   white-space: pre;
   color: #ABC;
+}
+
+div.tags-list {
+  height: 100%;
+  overflow: scroll;
+  border: #CCC 1px solid;
+  border-radius: 5px;
 }
 
 #tag:focus {
@@ -25,5 +40,5 @@ code.html {
 }
 
 .tag-highlight > span:not(.tag-highlight) {
-  color: #FC8;
+  color: #DC9;
 }

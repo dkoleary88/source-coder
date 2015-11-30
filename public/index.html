@@ -14,7 +14,7 @@
   </head>
 
   <body>
-    <div ng-app="SourceApp" ng-controller="SourceCtrl" class="container">
+    <div ng-app="SourceApp" ng-controller="SourceCtrl" class="container full-height">
 
       <!-- Heading Row -->
       <div class="row">
@@ -37,18 +37,18 @@
       </div>
 
       <!-- Info Row -->
-      <div class="row">
+      <div class="row eighty-height">
 
         <!-- Source Code Col -->
-        <div class="col-md-8">
+        <div class="col-md-8 full-height">
           <pre class="html">
             <code class="html" ng-bind-html="html"></code>
           </pre>
         </div>
 
         <!-- Tags Col -->
-        <div class="col-md-4">
-          <div class="list-group">
+        <div class="col-md-4 full-height">
+          <div class="list-group tags-list">
             <a href="#" id="tag" class="list-group-item" ng-repeat="(tag, count) in tags" ng-click="highlight(tag)">
               <span class="badge">{{count}}</span>
               {{tag}}
